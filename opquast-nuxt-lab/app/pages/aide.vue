@@ -1,9 +1,15 @@
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+</script>
+
 <template>
   <section class="space-y-10 max-w-3xl">
     <!-- Titre -->
     <header class="space-y-3">
       <button
-        @click="$router.back()"
+        @click="router.back()"
         class="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition"
       >
         ← Retour
