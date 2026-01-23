@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useRouter } from '#imports'
-import { getRuleById } from '~/data/rules'
+import { useRouter } from 'vue-router'
+import { getRuleById } from '../../data/rules'
 
 const router = useRouter()
 
@@ -171,7 +171,7 @@ function onSubmit(e: Event) {
 
               <button
                 type="submit"
-                :aria-disabled="(!isValid).toString()"
+                :aria-disabled="!isValid"
                 aria-describedby="submitHelp"
                 :class="[
                   'rounded-lg border border-zinc-800 px-3 py-2 text-sm transition',

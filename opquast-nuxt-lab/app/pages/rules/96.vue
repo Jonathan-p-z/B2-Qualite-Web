@@ -184,8 +184,8 @@
 
 <script setup lang="ts">
 import { ref, computed, onBeforeUnmount } from 'vue'
-import { useRouter } from '#imports'
-import { getRuleById } from '~/data/rules'
+import { useRouter } from 'vue-router'
+import { getRuleById } from '@/app/data/rules'
 
 const router = useRouter()
 

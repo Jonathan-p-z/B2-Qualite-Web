@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useRouter } from '#imports'
-import { getRuleById } from '~/data/rules'
+import { useRouter } from 'vue-router'
+import { getRuleById } from '../../data/rules'
 
 const router = useRouter()
 
