@@ -1,5 +1,5 @@
 <script setup>
-import rules from '~/data/rules.json'
+import rules from '../data/rules.json'
 </script>
 
 <template>

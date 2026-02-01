@@ -127,6 +127,7 @@ function onSubmit(e: Event) {
           </button>
         </div>
 
+
         <div class="p-6">
           <div
             v-if="activeTab === 'preview'"
@@ -188,6 +189,30 @@ function onSubmit(e: Event) {
                 Note : ici on évite l’attribut <code class="text-zinc-300">disabled</code> pour que le bouton reste atteignable/annoncé, et on bloque l’action côté JS.
               </p>
             </form>
+
+            <!-- Screenshot rendu comme dans la page 100 -->
+            <div class="mt-6">
+              <a
+                href="/screenshots/rule-98/screenshot-1.png"
+                target="_blank"
+                rel="noreferrer"
+                class="block cursor-zoom-in"
+              >
+                <img
+                  src="/screenshots/rule-98/screenshot-1.png"
+                  alt="Exemple d’application de la règle 98"
+                  class="h-full w-full object-cover"
+                  onerror="
+                    this.style.display = 'none'
+                    this.nextElementSibling.style.display = 'block'
+                  "
+                />
+              </a>
+              <div class="hidden text-center px-4">
+                <div class="text-sm text-zinc-300 font-medium">Screenshot à ajouter</div>
+                <div class="mt-1 text-xs text-zinc-500">Exemple réel attendu</div>
+              </div>
+            </div>
           </div>
 
           <div v-else id="panel-code" role="tabpanel" aria-labelledby="tab-code">

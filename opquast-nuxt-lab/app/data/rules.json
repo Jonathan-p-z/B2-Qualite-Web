@@ -88,5 +88,197 @@
       "Vérifier, pour chaque page concernée, que la liste des étapes y est indiquée, en règle générale sous forme d'un chemin d'étapes en tête de page ou de formulaire."
     ],
     "screenshotsSources": []
+  },
+  {
+    "id": 94,
+    "title": "Les listes d’options sont présentées dans un ordre identifiable",
+    "authors": ["Jonathan PEREZ"],
+    "path": "/rules/94",
+    "description": "Les options d’une liste (select) sont présentées selon un ordre cohérent et repérable (alphabétique, chronologique, par pertinence…), afin de faciliter la recherche et limiter l’effort cognitif.",
+    "tags": ["Accessibilité", "UX", "Conception", "Formulaires", "Contenus"],
+    "objectives": [
+      "Faciliter la recherche d’une valeur dans une liste d’options.",
+      "Réduire les erreurs de saisie et l’effort cognitif.",
+      "Améliorer la cohérence et la compréhension de l’interface."
+    ],
+    "implementationIntro": "Selon le contexte, plusieurs stratégies d’organisation sont possibles :",
+    "implementation": [
+      "Trier les options par ordre alphabétique lorsque la liste n’a pas d’ordre “naturel”.",
+      "Utiliser un ordre chronologique pour des dates/périodes.",
+      "Regrouper les options (optgroup) lorsque la liste est longue ou multi-catégories.",
+      "Mettre les éléments les plus fréquents en tête uniquement si cet ordre est explicite (ex. “Les plus utilisés”)."
+    ],
+    "control": [
+      "Vérifier que l’ordre des options est cohérent et identifiable (alphabétique, chronologique, etc.).",
+      "Vérifier que le regroupement (optgroup) est utilisé si nécessaire et reste compréhensible.",
+      "Vérifier que l’ordre reste stable d’une page à l’autre (sauf raison fonctionnelle)."
+    ]
+  },
+  {
+    "id": 95,
+    "title": "Les champs de saisie utilisent un type adapté (email, URL, téléphone, nombre, recherche, mot de passe, heure, date)",
+    "authors": ["Jonathan PEREZ"],
+    "path": "/rules/95",
+    "description": "Les champs doivent utiliser un attribut type cohérent avec la donnée attendue afin d’améliorer la saisie (clavier mobile), l’auto-complétion et la validation, et de réduire les erreurs.",
+    "tags": ["Accessibilité", "UX", "Conception", "Formulaires"],
+    "objectives": [
+      "Améliorer l’expérience de saisie, notamment sur mobile (clavier adapté).",
+      "Réduire les erreurs grâce à une validation plus pertinente.",
+      "Favoriser l’auto-complétion et la cohérence des formulaires."
+    ],
+    "implementationIntro": "Choisir le type en fonction de la donnée attendue et compléter si nécessaire avec autocomplete/inputmode :",
+    "implementation": [
+      "Utiliser type=\"email\" pour une adresse e-mail.",
+      "Utiliser type=\"url\" pour une adresse de site.",
+      "Utiliser type=\"tel\" pour un numéro de téléphone.",
+      "Utiliser type=\"number\" pour une valeur numérique (avec min/max/step si pertinent).",
+      "Utiliser type=\"search\" pour un champ de recherche.",
+      "Utiliser type=\"password\" pour un mot de passe (avec autocomplete adapté).",
+      "Utiliser type=\"time\" et type=\"date\" pour des heures et des dates."
+    ],
+    "control": [
+      "Vérifier que chaque champ utilise le type HTML correspondant à la donnée attendue.",
+      "Sur mobile, vérifier que le clavier proposé est adapté (email/url/tel/numeric).",
+      "Vérifier que l’auto-complétion (autocomplete) est cohérente sur les champs concernés."
+    ]
+  },
+  {
+    "id": 96,
+    "title": "Les procédures d’authentification à double facteur peuvent être relancées",
+    "authors": ["Jonathan PEREZ"],
+    "path": "/rules/96",
+    "description": "Lorsqu’une authentification à double facteur impose un code ou une action dans un délai limité, l’utilisateur doit pouvoir relancer l’envoi du code (ou la procédure) afin d’éviter les blocages en cas d’expiration, de non-réception ou d’erreur.",
+    "tags": ["Sécurité", "UX", "Accessibilité", "Conception"],
+    "objectives": [
+      "Éviter les blocages lorsque le code 2FA expire ou n’arrive pas.",
+      "Réduire l’abandon et la frustration lors de la connexion.",
+      "Améliorer l’inclusion (usagers avec difficultés de réception, de saisie, ou contraintes matérielles)."
+    ],
+    "implementationIntro": "Mettre à disposition une relance claire, contrôlée et sécurisée de la procédure :",
+    "implementation": [
+      "Afficher un bouton/lien explicite du type « Renvoyer le code » / « Relancer la procédure ».",
+      "Permettre la relance si le code a expiré, si le message n’a pas été reçu, ou si l’utilisateur a changé de canal (SMS, email, application).",
+      "Afficher un délai avant relance (cooldown) et un retour d’état (« code renvoyé ») pour éviter les clics répétés et rassurer.",
+      "Limiter les renvois (rate limiting) et prévoir une alternative (changement de moyen, contact support) en cas d’échec répété."
+    ],
+    "control": [
+      "Vérifier qu’un utilisateur peut relancer l’envoi du code après expiration/échec, sans être bloqué.",
+      "Vérifier la présence d’un retour d’état compréhensible (code renvoyé, délai avant nouvelle relance).",
+      "Vérifier que la relance est encadrée (délai, limites) pour éviter l’abus et protéger la sécurité."
+    ]
+  },
+  {
+    "id": 97,
+    "title": "Les champs permettant l'autocomplétion sont signalés dans le code source",
+    "authors": ["Jonathan PEREZ"],
+    "path": "/rules/97",
+    "description": "Les champs qui peuvent bénéficier de l’autocomplétion doivent être explicitement identifiés dans le code (via l’attribut autocomplete, et au besoin inputmode). Cela améliore la saisie, réduit les erreurs et aide notamment les utilisateurs de lecteurs d’écran.",
+    "tags": ["Accessibilité", "UX", "Conception", "Formulaires"],
+    "objectives": [
+      "Faciliter la saisie (auto-remplissage, suggestions) et réduire les erreurs.",
+      "Améliorer l’accessibilité, notamment avec les technologies d’assistance.",
+      "Accélérer le parcours utilisateur, surtout sur mobile."
+    ],
+    "implementationIntro": "Pour les champs concernés, renseigner des valeurs autocomplete pertinentes (et cohérentes avec le libellé) :",
+    "implementation": [
+      "Ajouter autocomplete sur les champs d’identité et de contact (name, given-name, family-name, email, tel…).",
+      "Ajouter autocomplete sur les champs d’adresse (street-address, postal-code, address-level2…).",
+      "Utiliser des valeurs adaptées au contexte (ex. current-password/new-password pour les mots de passe).",
+      "Éviter les valeurs génériques ou incorrectes : l’autocomplétion doit correspondre à la donnée réellement attendue."
+    ],
+    "control": [
+      "Vérifier dans le code source la présence d’attributs autocomplete sur les champs éligibles.",
+      "Vérifier que la valeur autocomplete correspond bien au champ (ex. email sur un email).",
+      "Tester le remplissage automatique / suggestions sur un navigateur courant et, si possible, avec un lecteur d’écran."
+    ]
+  },
+  {
+    "id": 98,
+    "title": "Les boutons désactivés ne sont pas masqués aux lecteurs d'écran",
+    "authors": ["Jonathan PEREZ"],
+    "path": "/rules/98",
+    "description": "Si un bouton est rendu indisponible (ex. validation d’un formulaire), il doit rester perceptible et compréhensible pour les utilisateurs de lecteurs d’écran : il faut exposer son état (désactivé/indisponible) et, idéalement, la raison et les conditions pour l’activer.",
+    "tags": ["Accessibilité", "UX", "Conception", "Formulaires"],
+    "objectives": [
+      "Éviter qu’un contrôle essentiel devienne “invisible” aux technologies d’assistance.",
+      "Permettre à l’utilisateur de comprendre pourquoi l’action est indisponible.",
+      "Réduire les blocages et erreurs lors du remplissage de formulaires."
+    ],
+    "implementationIntro": "Si vous choisissez de désactiver un bouton, prendre des précautions d’accessibilité :",
+    "implementation": [
+      "Ne pas masquer le bouton aux technologies d’assistance (ne pas le retirer du DOM / ne pas le cacher via aria-hidden).",
+      "Exposer l’état d’indisponibilité de façon accessible (ex. aria-disabled=\"true\" sur un bouton conservé focusable).",
+      "Associer un texte explicatif au bouton (aria-describedby) indiquant ce qui manque pour l’activer.",
+      "Si vous utilisez l’attribut HTML disabled (qui retire souvent le focus), proposer une information alternative claire et une manière simple d’identifier les champs manquants."
+    ],
+    "control": [
+      "Vérifier au lecteur d’écran que le bouton est bien annoncé même lorsqu’il est indisponible.",
+      "Vérifier qu’une raison/consigne est accessible (ex. via aria-describedby) et compréhensible.",
+      "Vérifier que l’utilisateur peut atteindre le bouton au clavier (selon la stratégie retenue) et comprendre comment l’activer."
+    ]
+  },
+  {
+    "id": 99,
+    "title": "La page d'accueil expose la nature des contenus et services proposés.",
+    "path": "/rules/99",
+    "description": "Faites gagner du temps à vos internautes : expliquez-leur ce qu’ils pourront trouver dans votre site. La page d’accueil doit rendre la promesse du site explicite (contenus, services, public visé) et proposer des accès rapides vers les sections clés.",
+    "tags": [
+      "UX",
+      "Conception",
+      "Contenus",
+      "Éditorial",
+      "SEO",
+      "Accessibilité"
+    ],
+    "objectives": [
+      "Permettre aux utilisateurs de comprendre immédiatement l'objectif du site et ce qu'ils peuvent y faire.",
+      "Réduire le temps de recherche et éviter les erreurs d’orientation.",
+      "Améliorer la compréhension par les moteurs de recherche (thématique et proposition de valeur)."
+    ],
+    "implementationIntro": "Sur la page d’accueil, rendre explicites la nature du site et les actions possibles dès le premier écran.",
+    "implementation": [
+      "Afficher un titre (H1) et un court résumé décrivant clairement le contenu et/ou les services proposés.",
+      "Mettre en avant les rubriques, contenus phares ou services principaux (3 à 6 éléments maximum).",
+      "Indiquer à qui s’adresse le site (public visé) et, si pertinent, la zone géographique ou le périmètre.",
+      "Proposer des accès rapides vers les actions majeures (ex. : démarrer, rechercher, contacter, se connecter).",
+      "Utiliser un vocabulaire simple et concret, éviter le jargon et les slogans non informatifs."
+    ],
+    "control": [
+      "Depuis la page d’accueil, vérifier qu’un utilisateur comprend en moins de quelques secondes ce que le site propose (contenus + services).",
+      "Vérifier la présence d’un titre et d’un résumé explicites, et de liens vers les sections principales.",
+      "Vérifier que les accès rapides sont visibles, compréhensibles et atteignables au clavier."
+    ],
+    "screenshotsSources": [
+      "https://www.virustotal.com/gui/home/upload"
+    ]
+  },
+  {
+    "id": 100,
+    "title": "Si les contenus ou services sont réservés ou destinés à un public spécifique, ce public est mentionné au moins sur la page d'accueil.",
+    "authors": ["Jonathan PEREZ"],
+    "path": "/rules/100",
+    "description": "Cette règle s’applique essentiellement lorsque la consultation des contenus peut poser des problèmes ou présenter des risques pour certaines catégories d’utilisateurs. Si votre site s’adresse à des plombiers, vous n’êtes pas obligé de le préciser. S’il présente des photos de plombiers nus, cela peut être en revanche utile.",
+    "tags": ["Accessibilité", "UX", "Conception", "Contenus", "Éditorial"],
+    "objectives": [
+      "Éviter qu’un utilisateur accède par surprise à un contenu inadapté à sa situation (âge, sensibilité, contexte professionnel).",
+      "Permettre aux utilisateurs de s’auto-orienter rapidement (continuer, chercher une alternative, quitter).",
+      "Réduire les risques (juridiques, éthiques, sécurité) liés à une exposition non souhaitée."
+    ],
+    "implementationIntro": "Dès la page d’accueil, indiquer clairement le public visé quand les contenus/services le nécessitent.",
+    "implementation": [
+      "Afficher une mention explicite du public concerné (ex. : “réservé aux professionnels”, “18+”, “contenu sensible”).",
+      "Placer cette mention à un endroit visible au chargement (haut de page, bloc d’introduction).",
+      "Formuler l’avertissement simplement, sans jargon, en expliquant la raison si nécessaire.",
+      "Proposer une alternative ou une sortie claire (ex. : section tout public, retour, contact).",
+      "S’assurer que l’information est aussi annoncée aux technologies d’assistance (texte réel, pas uniquement une image)."
+    ],
+    "control": [
+      "Depuis la page d’accueil, vérifier qu’un utilisateur comprend si le site est réservé/destiné à un public spécifique.",
+      "Vérifier que l’information est visible sans action particulière et qu’elle n’est pas portée uniquement par la couleur.",
+      "Vérifier au clavier et au lecteur d’écran que l’avertissement/mention est accessible et compréhensible."
+    ],
+    "screenshotsSources": [
+      "https://ageguard.io/create-widget/"
+    ]
   }
 ]

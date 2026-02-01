@@ -72,62 +72,50 @@ const activeTab = ref<'preview' | 'code'>('preview')
 		</section>
 
 		<!-- Screenshots -->
+		<!-- Screenshots -->
 		<section class="space-y-4">
 			<h2 class="text-lg font-semibold tracking-tight text-zinc-100">Screenshots</h2>
 
-			<div
-				v-if="rule.screenshotsSources && rule.screenshotsSources.length"
-				class="flex gap-4 overflow-x-auto pb-4 scrollbar-light"
-			>
-				<div
-					v-for="(source, index) in rule.screenshotsSources"
-					:key="source + index"
-					class="shrink-0 w-[280px] sm:w-[340px]"
-				>
+			<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-light">
+				<div class="shrink-0 w-[280px] sm:w-[340px]">
 					<div
-						class="aspect-[16/10] rounded-2xl border border-zinc-800 bg-zinc-900/20 overflow-hidden flex items-center justify-center"
+						class="aspect-[16/10] rounded-2xl border border-zinc-800 bg-zinc-900/20 overflow-hidden"
 					>
 						<a
-							:href="`/screenshots/rule-${rule.id}/screenshot-${index + 1}.png`"
+							href="/screenshots/rule-100/screenshot-1.png"
 							target="_blank"
 							rel="noreferrer"
-							class="block cursor-zoom-in"
+							class="block cursor-zoom-in h-full w-full"
 						>
 							<img
-								:src="`/screenshots/rule-${rule.id}/screenshot-${index + 1}.png`"
-								:alt="`Exemple d’application de la règle ${rule.id}`"
+								src="/screenshots/rule-100/screenshot-1.png"
+								alt="Popup de vérification d’âge – règle 100"
 								class="h-full w-full object-cover"
-								onerror="
-									this.style.display = 'none'
-									this.nextElementSibling.style.display = 'block'
-								"
+								onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
 							/>
+							<div
+								class="hidden h-full w-full items-center justify-center text-center px-4"
+							>
+								<div>
+									<div class="text-sm text-zinc-300 font-medium">
+										Screenshot à ajouter
+									</div>
+									<div class="mt-1 text-xs text-zinc-500">
+										Popup de vérification d’âge (18+)
+									</div>
+								</div>
+							</div>
 						</a>
-
-						<div class="hidden text-center px-4">
-							<div class="text-sm text-zinc-300 font-medium">Screenshot à ajouter</div>
-							<div class="mt-1 text-xs text-zinc-500">Exemple réel attendu</div>
-						</div>
 					</div>
 
 					<div class="mt-2 text-xs text-zinc-500">
 						Source :
-						<a
-							:href="source"
-							target="_blank"
-							rel="noreferrer"
-							class="underline underline-offset-4 hover:text-zinc-300"
-						>
-							{{ source }}
-						</a>
+						<span class="italic">Page d’accueil – vérification d’âge</span>
 					</div>
 				</div>
 			</div>
-
-			<p v-else class="text-sm text-zinc-400">
-				Aucune source de screenshot n’est définie pour cette règle.
-			</p>
 		</section>
+
 
 		<section class="space-y-4">
 			<h2 class="text-lg font-semibold tracking-tight text-zinc-100">Exemples</h2>
